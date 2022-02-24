@@ -1,0 +1,40 @@
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.bubbles {
+  display: flex;
+  animation-name: fadeInOpacity;
+	animation-timing-function: ease-in;
+	animation-duration: .4s;
+}
+
+.bubbles img {
+  height: 100px;
+}
+
+.bubbles-wrapper {
+  padding: 15px;
+}
+
+.bubble {
+  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+  padding: 15px;
+  margin: 20px 10px;
+  border-radius: 15px;
+}
+
+ul.bubble {
+  padding: 40px;
+  width: auto;
+  margin: 10px 50px;
+}
+
+.list-offset {
+  min-width: 87px;
+}
