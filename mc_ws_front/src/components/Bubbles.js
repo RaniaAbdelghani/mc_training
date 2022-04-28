@@ -2,6 +2,7 @@ import "./Bubble.css"
 import controllerImg from './controleur.png'
 import detectiveImg from './detective.png'
 import explorateurImg from './explorateur.png'
+import Propositions from "./Propositions"
 
 const images = [controllerImg, detectiveImg, explorateurImg, controllerImg]
 
@@ -35,6 +36,10 @@ export default function Bubbles({ bubbles, img }) {
                     }
                   </ul>
                 </>
+              }
+              {
+                bubble.kind === 'help' &&
+                <Propositions content={bubble.content} />
               }
             </div>
           })

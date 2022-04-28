@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios"
 import "./App.css";
 import { GridLayout } from "./components/GridLayout";
@@ -6,7 +6,7 @@ import Path from "./components/Path";
 import texts from "./data/texts";
 import Bubbles from "./components/Bubbles";
 
-const url = "http://localhost:8000"
+const url = "http://192.168.1.47:8000"
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -15,6 +15,24 @@ function App() {
   const [isTextDone, setTextDone] = useState(false);
   const [step, setStep] = useState(1)
   const [text, setText] = useState(0)
+
+  useEffect(() => {
+    const oldState = window.localStorage.state
+    if (oldState) {
+      const { userName, user, isTextDone, step, text } = JSON.parse(oldState)
+
+      setUserName(userName)
+      setUser(user)
+      setTextDone(isTextDone)
+      setStep(step)
+      setText(text)
+    }
+  }, [])
+  
+  useEffect(() => {
+    window.localStorage.setItem('state', JSON.stringify({ userName, user, isTextDone, step, text }))
+  }, [userName, user, isTextDone, step, text])
+
 
   const login = async () => {
     // set user in db

@@ -22,6 +22,14 @@ export const bubbles12 = (propositions) => ({
         kind: 'text',
         content: "Choisis celle qui t'intringue le plus en l'écrivant dans l'encadré. Tu vas ensuite aller la découvrir avec l'aide de nos autres amis métacognitifs."
       },
+      {
+        kind: 'help',
+        content: [
+          'xd',
+          'ds',
+          'sa'
+        ]
+      }
     ]
   },
   2: {
@@ -113,6 +121,7 @@ export const bubbles3 = (propositions) => ({
         kind: 'text',
         content: "Prend donc ton temps et écris les phrases qui te rendent incertain et que tu penses sont importantes à découvrir."
       },
+      
     ]
   },
   2: {
