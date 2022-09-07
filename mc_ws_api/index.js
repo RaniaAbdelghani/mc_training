@@ -16,7 +16,10 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/mc_db');
+  await mongoose.connect('mongodb://localhost:27017/mc_db', {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+  });
 }
 
 main().catch(err => console.log(err));

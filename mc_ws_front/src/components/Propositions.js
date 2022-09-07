@@ -5,7 +5,7 @@ export default function Propositions({ content }) {
     return <>
         {
             !show &&
-            <button onClick={() => setShow(true)}>help me :'(</button>
+            <button onClick={() => setShow(true)}>Je ne sais pas, je veux voir des propositions</button>
         }
         {
             show &&

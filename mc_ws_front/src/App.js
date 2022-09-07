@@ -6,7 +6,7 @@ import Path from "./components/Path";
 import texts from "./data/texts";
 import Bubbles from "./components/Bubbles";
 
-const url = "http://192.168.1.47:8000"
+const url = "http://192.168.1.13:8000"
 
 function App() {
   const [userName, setUserName] = useState("");

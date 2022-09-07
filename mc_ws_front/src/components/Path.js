@@ -1,7 +1,7 @@
 import './Path.css'
-import controllerImg from './controleur.png'
-import detectiveImg from './detective.png'
-import explorateurImg from './explorateur.png'
+import controllerImg from './controleur1.png'
+import detectiveImg from './detective1.png'
+import explorateurImg from './explorateur1.png'
 import { useState } from 'react'
 
 const initData = {
