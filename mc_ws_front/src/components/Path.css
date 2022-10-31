@@ -1,0 +1,76 @@
+.path {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  margin: 0 auto;
+  background: url('./path2n.png') no-repeat;
+  background-size: 70% 70%;
+  background-position: center;
+  min-width: 700px;
+  min-height: 700px;
+}
+
+.path img {
+  cursor: pointer;
+}
+
+.path h2 {
+  margin: 10px 0;
+}
+
+.path input {
+  margin-left: 30px;
+  width: 200px;
+}
+
+.ctrl2 {
+  position: absolute;
+  bottom: 42%;
+  right: 66%;
+  width: 20%;
+}
+
+.ctrl1 {
+  position: absolute;
+  bottom: 75%;
+  left: 45%;
+  width: 20%;
+}
+
+.exp {
+  position: absolute;
+  bottom: 10%;
+  left: 45%;
+  width: 20%;
+}
+
+.det {
+  position: absolute;
+  bottom: 42%;
+  right: 3%;
+  width: 20%;
+}
+
+.label-top {
+  position: absolute;
+  top: -25px;
+  left: 85px;
+}
+
+.label-bottom {
+  position: absolute;
+  bottom: 110px;
+  left: -90px;
+}
+
+.label-left {
+  position: absolute;
+  left: 100px;
+  top: 0px;
+}
+
+.label-right {
+  position: absolute;
+  right: 20px;
+  top: -110px;
+}

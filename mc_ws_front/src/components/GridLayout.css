@@ -1,0 +1,42 @@
+.grid-layout {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  grid-gap: 0;
+}
+
+.grid-layout > div {
+  margin: 0;
+  padding: 0;
+}
+
+.seperator {
+  background: white;
+  border-left: solid 1px #777;
+  border-right: solid 1px #777;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: ew-resize;
+}
+
+.seperator:hover{
+  background: #eee;
+}
+
+.seperator .dot {
+  content: '';
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background: #777;
+  margin: 2px 0;
+}
+
+.column {
+  max-height: 100vh;
+  overflow-y: auto;
+}
