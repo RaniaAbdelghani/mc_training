@@ -11,11 +11,15 @@ const initData = {
   exp: ""
 }
 
-export default function Path({ onImgChanged, onFinish, kind }) {
+export default function Path({ onImgChanged, onFinish, kind, text }) {
   const [data, setData] = useState(initData)
-  console.log(kind)
   const [done, setDone] = useState(kind === "exp" ? Infinity : 0);
   const [showDone, setShowDone] = useState(false)
+
+  useEffect(() => {
+    setDone(kind === "exp" ? Infinity : 0)
+    setShowDone(false)
+  }, [text, kind])
 
   useEffect(() => {
     if (done === 3) {

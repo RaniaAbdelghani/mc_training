@@ -102,7 +102,7 @@ function App() {
         }
       </div>
       <div>
-        <Path onImgChanged={handleImgClick} onFinish={handleFinish} kind={kind} />
+        <Path text={text} onImgChanged={handleImgClick} onFinish={handleFinish} kind={kind} />
       </div>
       <div>
         {
