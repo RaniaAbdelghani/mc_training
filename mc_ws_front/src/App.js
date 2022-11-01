@@ -6,11 +6,12 @@ import Path from "./components/Path";
 import texts from "./data/texts";
 import Bubbles from "./components/Bubbles";
 
-const url = "http://192.168.1.13:8000"
+const url = "http://localhost:8000"
 
 function App() {
   const [userName, setUserName] = useState("");
   const [user, setUser] = useState("");
+  const [kind, setKind] = useState(null);
 
   const [isTextDone, setTextDone] = useState(false);
   const [step, setStep] = useState(1)
@@ -22,38 +23,40 @@ function App() {
   useEffect(() => {
     const oldState = window.localStorage.state
     if (oldState) {
-      const { userName, user, isTextDone, step, text } = JSON.parse(oldState)
+      const { userName, user, isTextDone, step, text, kind } = JSON.parse(oldState)
 
       setUserName(userName)
       setUser(user)
       setTextDone(isTextDone)
       setStep(step)
       setText(text)
-      if(audioRef.current){
+      setKind(kind)
+      if (audioRef.current) {
         audioRef.current.load();
       }
       previousUrl.current = texts[text].audio;
     }
   }, [])
-  
+
   useEffect(() => {
-    window.localStorage.setItem('state', JSON.stringify({ userName, user, isTextDone, step, text }))
-  }, [userName, user, isTextDone, step, text])
+    window.localStorage.setItem('state', JSON.stringify({ userName, user, isTextDone, step, text, kind }))
+  }, [userName, user, isTextDone, step, text, kind])
 
 
   const login = async () => {
     // set user in db
-    await axios.post(url + '/user', { name: userName })
+    await axios.post(url + '/user', { name: userName, kind })
     setUser(userName);
   }
 
   const handleImgClick = (index) => {
+    if (index !== 3 && kind === "exp") return;
     setStep(index)
   }
 
   const handleFinish = async (data) => {
     // submit data to server
-    await axios.post(url + '/data', { name: user, data: { [text]: data }} )
+    await axios.post(url + '/data', { name: user, data: { [text]: data } })
     setTextDone(false)
     setText(text + 1)
     setStep(1)
@@ -63,13 +66,21 @@ function App() {
     setTextDone(true)
   }
 
+  if (kind === null) return <div>
+    <select onChange={(e) => setKind(e.target.value)}>
+      <option selected disabled>select type</option>
+      <option value="exp">Option  </option>
+      <option value="nrml">normal</option>
+    </select>
+  </div>
+
   if (!user) return <div className="card">
     <h1>Nom d'utlisateur</h1>
     <input onChange={(e) => setUserName(e.target.value)} />
     <button onClick={login}>Submit</button>
   </div>
 
-  if (text === texts.length) return <div className="card"> 
+  if (text === texts.length) return <div className="card">
     <h1>Merci {user} !</h1>
   </div>
 
@@ -79,7 +90,7 @@ function App() {
         <p className="text">
           <h3>Texte {text + 1}: </h3>
           <p className="content">
-            { texts[text].content }
+            {texts[text].content}
           </p>
           <audio controls ref={audioRef}>
             <source src={texts[text].audio} type="audio/mp3"></source>
@@ -91,7 +102,7 @@ function App() {
         }
       </div>
       <div>
-        <Path onImgChanged={handleImgClick} onFinish={handleFinish} />
+        <Path onImgChanged={handleImgClick} onFinish={handleFinish} kind={kind} />
       </div>
       <div>
         {

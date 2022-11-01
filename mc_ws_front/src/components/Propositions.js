@@ -1,7 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Propositions({ content }) {
     const [show, setShow] = useState(false)
+
+    useEffect(() => {
+        setShow(false);
+    }, [content])
+
     return <>
         {
             !show &&
