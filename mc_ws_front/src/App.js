@@ -42,6 +42,10 @@ function App() {
     window.localStorage.setItem('state', JSON.stringify({ userName, user, isTextDone, step, text, kind }))
   }, [userName, user, isTextDone, step, text, kind])
 
+  useEffect(() => {
+    setStep(kind === 'exp' ? 3 : 1)
+  }, [kind])
+
 
   const login = async () => {
     // set user in db
