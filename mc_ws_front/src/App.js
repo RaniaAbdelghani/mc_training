@@ -14,7 +14,7 @@ function App() {
   const [kind, setKind] = useState(null);
 
   const [isTextDone, setTextDone] = useState(false);
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(kind === 'exp' ? 3 : 1)
   const [text, setText] = useState(0)
 
   const previousUrl = useRef('');
