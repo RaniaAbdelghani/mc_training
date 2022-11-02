@@ -59,7 +59,7 @@ function App() {
     await axios.post(url + '/data', { name: user, data: { [text]: data } })
     setTextDone(false)
     setText(text + 1)
-    setStep(1)
+    setStep(kind === 'exp' ? 3 : 1)
   }
 
   const handleTextDone = () => {
